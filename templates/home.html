@@ -1,0 +1,279 @@
+<!--<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Heart Disease Prediction</title>
+    <link rel="stylesheet" href="TestForm2.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">Heart Disease Test Form</div>
+      <div class="content">
+      <form action="{% url 'result' %}">
+
+  {% csrf_token %}
+<!--
+  Enter Age :- <input type="text" required name="Enter Age"> <br> <br>
+  Enter Gender :- <input type="text" required name="Enter Sex"> --><!--<select name="Gender"><option value="0">Male</option><option value="1">Female</option></select><br> <br>
+  Enter cp :- <input type="text" required name="Enter cp"> <br> <br>
+  Enter trestbps :- <input type="text" required name="Enter trestbps"> <br> <br>
+  Enter chol :- <input type="text" required name="Enter chol"> <br> <br>
+  Enter fbs :- <input type="text" required name="Enter fbs"> <br> <br>
+  Enter restecg :- <input type="text" required name="Enter restecg"> <br> <br>
+  Enter thalach :- <input type="text" required name="Enter thalach"> <br> <br>
+  Enter exang :- <input type="text" required name="Enter exang"> <br> <br>
+  Enter oldpeak :- <input type="text" required name="Enter oldpeak"> <br> <br>
+  Enter slope :- <input type="text" required name="Enter slope"> <br> <br>
+  Enter ca :- <input type="text" required name="Enter ca"> <br> <br>
+  Enter thal :- <input type="text" required name="Enter thal"> <br> <br>
+
+
+  <input type="submit" name="" value="submit">
+  
+  </body>
+</html>-->
+
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+body{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.container{
+  margin-top:75px;
+  max-width: 1300px;
+  width: 90%;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+.container .title{
+  font-size: 35px;
+  font-weight: 100%;
+  position: relative;
+}
+.container .title::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.content form .user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+form .user-details .input-box{
+  margin-bottom: 15px;
+  width: 100%;
+}
+form .input-box span.details{
+  display: block;
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.user-details .input-box input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 20px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
+  border-color: #9b59b6;
+}
+.option input{
+  height: 45px;
+  width: 500;
+  outline: none;
+  font-size: 20px;  
+}
+ form .button{
+   height: 45px;
+   margin: 35px 0
+ }
+ form .button input{
+   height: 100%;
+   width: 100%;
+   border-radius: 5px;
+   border: none;
+   color: #fff;
+   font-size: 24px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background: linear-gradient(135deg, #71b7e6, #9b59b6);
+ }
+ form .button input:hover{
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  }
+ @media(max-width: 584px){
+ .container{
+  max-width: 100%;
+}
+form .user-details .input-box{
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  form .category{
+    width: 100%;
+  }
+  .content form .user-details{
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .user-details::-webkit-scrollbar{
+    width: 5px;
+  }
+
+}
+form .select{
+
+  width: 100%;
+  height: 45px;
+  font-size: 20px;
+
+}
+
+  @media(max-width: 459px){
+  .container .content .category{
+    flex-direction: column;
+  }
+}
+
+
+
+
+    </style>
+   </head>
+<body>
+  <div class="container">
+   <!-- <script>
+      alert("Please enter valid data. Based on your data the prediction is done !")
+    </script> -->
+    <div class="title">Heart Disease Prediction</div>
+    <div class="content">
+      <form action="{% url 'result' %}">
+
+        {% csrf_token %}
+        
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Age</span>
+            <input type="number" placeholder="Enter your age" required name="Enter Age">
+          </div>
+          <div class="input-box">
+        		<span class="details">Gender</span>
+        		<select class="select" name="Gender">
+	      		<option value="0">Male</option>
+	      		<option value="1">Female</option>
+	        	</select>
+          </div>
+          <div class="input-box">
+        		<span class="details">Chest Pain Type</span>
+        		<select class="select" name="Enter cp">
+              <option value="0">Typical angina</option>
+              <option value="1">Atypical angina</option>
+	      		  <option value="2">Non-anginal pain</option>
+	      		  <option value="3">Asymptomatic</option>
+	        	</select>
+          </div>
+          <div class="input-box">
+            <span class="details">Resting blood pressure in mm Hg</span>
+            <input type="number" placeholder="Enter Resting blood pressure" required name="Enter trestbps">
+          </div>
+          <div class="input-box">
+            <span class="details">Serum cholesterol in mg/dl</span>
+            <input type="number" placeholder="Enter cholesterol" required name="Enter chol">
+          </div>
+          <div class="input-box">
+        		<span class="details">Fasting blood sugar >120 mg/dl</span>
+        		<select class="select" name="Enter fbs">
+	      		<option value="1">True</option>
+	      		<option value="0">False</option>
+	        	</select>
+          </div>
+          <div class="input-box">
+        		<span class="details">Resting ECG results</span>
+        		<select class="select" name="Enter restecg">
+              <option value="0">Normal</option>
+              <option value="1">Having ST-T wave abnormality</option>
+	      		  <option value="2">Probable or definite left ventricular hypertrophy</option>
+	        	</select>
+          </div>
+          <div class="input-box">
+            <span class="details">Maximum heart rate</span>
+            <input type="number" placeholder="Enter Heart rate" required name="Enter thalach">
+          </div>
+          <div class="input-box">
+        		<span class="details">Exercise Induced Angina</span>
+        		<select class="select" name="Enter exang">
+	      		<option value="1">Yes</option>
+	      		<option value="0">No</option>
+	        	</select>
+          </div>
+          <div class="input-box">
+            <span class="details">ST Depression Induced</span>
+            <input type="number" placeholder="0" required name="Enter oldpeak">
+          </div>
+          <div class="input-box">
+        		<span class="details">Slope of the peak exercise ST segment</span>
+        		<select class="select" name="Enter slope">
+              <option value="0">Upsloping</option>
+              <option value="1">Flat</option>
+	      		  <option value="2">Downsloping</option>
+	        	</select>
+          </div>
+          <div class="input-box">
+            <span class="details">Number of major vessels colored</span>
+            <input type="number" placeholder="0" required name="Enter ca">
+          </div>
+          <div class="input-box">
+        		<span class="details">Thalassemia</span>
+        		<select class="select" name="Enter thal">
+              <option value="3">Normal</option>
+              <option value="6">Fixed defect</option>
+	      		  <option value="7">Reversable defect</option>
+	        	</select>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Predict">
+        </div>
+       
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
